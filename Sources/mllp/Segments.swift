@@ -21,7 +21,7 @@ struct Segments {
         CharacterSet stringEncoding: CFStringEncoding?,
         PrincipalLanguage    MSH_19: String?
         )
-        -> String?
+        -> String
     {
         let MSH_18: String
         switch (stringEncoding) {
@@ -59,7 +59,7 @@ struct Segments {
         PatientBirthDate         PID_7: String?,
         PatientAdministrativeSex PID_8: String?
         )
-        -> String?
+        -> String
     {
         return String(format:"PID|||%@||%@|%@|%@|%@",
                       PID_3,
@@ -71,5 +71,45 @@ struct Segments {
     
     //----------------------------------------------------------------------
     
+    static func PV1(
+        VisitNumber         PV1_8: String?,
+        ReferringDoctor    PV1_15: String?,
+        AmbultatoryStatus  PV1_19: String?
+        )
+        -> String
+    {
+        return String(format: "PV1||||||||%@|||||||%@||||%@",
+                      PV1_8 ?? "",
+                      PV1_15 ?? "",
+                      PV1_19 ?? "")
+    }
+    
+    //----------------------------------------------------------------------
+    
+    static func ORC(
+        OrderControl            ORC_1: String?,
+        sendingRisName          ORC_2: String?,
+        receivingPacsaet        ORC_3: String?,
+        isrPlacerDT            ORC_2_: String?,
+        isrFillerScheduledDT   ORC_3_: String?,
+        spsOrderStatus          ORC_4: String?,
+        spsDateTime             ORC_7: String?,
+        rpPriority             ORC_7_: String?,
+        EnteringDevice         ORC_18: String?
+        )
+        -> String
+    {
+        let DTnow: String = DICMTypes.DTString(fromDate: Date())
+        return String(format: "ORC|%@|%@^%@|%@^%@||%@||^^^%@^^%@|||||||||||%@",
+                      ORC_1 ?? "NW",
+                      ORC_2 ?? "HIS",
+                      ORC_2_ ?? DTnow,
+                      ORC_3 ?? "CUSTODIAN",
+                      ORC_3_ ?? DTnow,
+                      ORC_4 ?? "SC",
+                      ORC_7 ?? DTnow,
+                      ORC_7_ ?? "T",
+                      ORC_18 ?? "IP")
+    }
     
 }
