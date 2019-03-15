@@ -54,7 +54,6 @@ struct Segments {
     
     static func PID(
         PatientIdentifierList    PID_3: String,
-        AlternatePatientID       PID_4: String?,
         PatientName              PID_5: String,
         MotherMaidenName         PID_6: String?,
         PatientBirthDate         PID_7: String?,
@@ -62,9 +61,8 @@ struct Segments {
         )
         -> String?
     {
-        return String(format:"PID|||%@|%@|%@|%@|%@|%@",
-                      PID_3,
-                      PID_4 ?? "",
+        return String(format:"PID|||%@||%@|%@|%@|%@",
+                      PID_3,                      
                       PID_5,
                       PID_6 ?? "",
                       PID_7 ?? "",

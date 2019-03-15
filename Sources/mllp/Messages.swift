@@ -41,7 +41,6 @@ public struct Messages {
         
         let PID: String? = Segments.PID(
             PatientIdentifierList   :PID_3,
-            AlternatePatientID      :nil,
             PatientName             :PID_5,
             MotherMaidenName        :nil,
             PatientBirthDate        :PID_7,
