@@ -112,4 +112,42 @@ struct Segments {
                       ORC_18 ?? "IP")
     }
     
+    //----------------------------------------------------------------------
+    
+    static func OBR(
+        spsProtocolCode                  OBR_4: String?,
+        isrDangerCode                   OBR_12: String?,
+        isrRelevantClinicalInfo         OBR_13: String?,
+        isrReferringPhysician           OBR_16: String?,
+        isrAccessionNumber              OBR_18: String?,
+        rpID                            OBR_19: String?,
+        spsID                           OBR_20: String?,
+        spsStationAETitle               OBR_21: String,
+        spsModality                     OBR_24: String?,
+        rpTransportationMode            OBR_30: String?,
+        rpReasonForStudy                OBR_31: String?,
+        isrNameOfPhysiciansReadingStudy OBR_32: String?,
+        spsTechnician                   OBR_34: String?,
+        rpUniversalStudyCode            OBR_44: String?
+        )
+        -> String
+    {
+        let uniqueRpID_SpsID = Date().timeIntervalSinceReferenceDate
+        return String(format:"OBR||||%@||||||||%@|%@|||%@||%@|%@|%@|%@|||%@||||||%@|%@|%@||%@||||||||||%@",
+            OBR_4 ?? "",
+            OBR_12 ?? "",
+            OBR_13 ?? "",
+            OBR_16 ?? "",
+            OBR_18 ?? "",
+            OBR_19 ?? "\(uniqueRpID_SpsID)",
+            OBR_20 ?? "\(uniqueRpID_SpsID)",
+            OBR_21,
+            OBR_24 ?? "",
+            OBR_30 ?? "",
+            OBR_31 ?? "",
+            OBR_32 ?? "",
+            OBR_34 ?? "",
+            OBR_44 ?? "")
+    }
+    
 }
