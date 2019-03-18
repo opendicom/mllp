@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct Segments {
+public struct Segments {
     
-    static func MSH(
+    public static func MSH(
         SendingApplication    MSH_3: String?,
         SendingFacility       MSH_4: String?,
         ReceivingApplication  MSH_5: String?,
@@ -52,7 +52,7 @@ struct Segments {
     
     //----------------------------------------------------------------------
     
-    static func PID(
+    public static func PID(
         PatientIdentifierList    PID_3: String,
         PatientName              PID_5: String,
         MotherMaidenName         PID_6: String?,
@@ -71,7 +71,7 @@ struct Segments {
     
     //----------------------------------------------------------------------
     
-    static func PV1(
+    public static func PV1(
         VisitNumber         PV1_8: String?,
         ReferringDoctor    PV1_15: String?,
         AmbultatoryStatus  PV1_19: String?
@@ -86,7 +86,7 @@ struct Segments {
     
     //----------------------------------------------------------------------
     
-    static func ORC(
+    public static func ORC(
         OrderControl            ORC_1: String?,
         sendingRisName          ORC_2: String?,
         receivingPacsaet        ORC_3: String?,
@@ -114,7 +114,7 @@ struct Segments {
     
     //----------------------------------------------------------------------
     
-    static func OBR(
+    public static func OBR(
         spsProtocolCode                  OBR_4: String?,
         isrDangerCode                   OBR_12: String?,
         isrRelevantClinicalInfo         OBR_13: String?,
@@ -152,7 +152,7 @@ struct Segments {
     
     //----------------------------------------------------------------------
     
-    static func ZDS(StudyInstanceUID ZDS_1: String?) -> String {
+    public static func ZDS(StudyInstanceUID ZDS_1: String?) -> String {
         return String(format: "ZDS|%@", ZDS_1 ?? "1.2")
     }
     
