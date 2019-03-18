@@ -150,4 +150,10 @@ struct Segments {
             OBR_44 ?? "")
     }
     
+    //----------------------------------------------------------------------
+    
+    static func ZDS(StudyInstanceUID ZDS_1: String?) -> String {
+        return String(format: "ZDS|%@", ZDS_1 ?? "1.2")
+    }
+    
 }
