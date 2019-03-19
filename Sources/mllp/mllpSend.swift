@@ -14,7 +14,7 @@ public struct mllpSend {
         to ipString: String,
         port portString: String,
         message: String,
-        stringEncoding: CFStringEncoding,
+        stringEncoding: String.Encoding,
         payload: inout String
         ) -> Bool
     {
@@ -35,20 +35,11 @@ public struct mllpSend {
             payload.append(contentsOf: String(format:"can not create input stream to %@:%@",ipString,portString))
             return false;
         }
-        var encode: String.Encoding
-        switch (stringEncoding) {
-        case 1://ascii
-            encode=String.Encoding.ascii
-        case 4://utf-8
-            encode=String.Encoding.utf8
-        default:
-            encode=String.Encoding.isoLatin1
-        }
         //send message
         outputStream?.open()
         var data = Data()
         data.append(&SB, count: 1)
-        data.append(message.data(using: encode)!)
+        data.append(message.data(using: stringEncoding)!)
         data.append(&EB, count: 1)
         data.append(&CR, count: 1)
         //Data in swift does not allow to obtain the bytes, it must be copied in UnsafeMutablePointer

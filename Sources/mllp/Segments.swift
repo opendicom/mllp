@@ -18,13 +18,13 @@ public struct Segments {
         MessageControlID     MSH_10: String?,
         VersionID            MSH_12: String?,
         CountryCode          MSH_17: String?,
-        CharacterSet stringEncoding: CFStringEncoding?,
+        CharacterSet stringEncoding: String.Encoding?,
         PrincipalLanguage    MSH_19: String?
         )
         -> String
     {
         let MSH_18: String
-        switch (stringEncoding) {
+        switch (stringEncoding?.rawValue) {
         case 1://ascii
             MSH_18="ASCII"
         case 4://utf-8
