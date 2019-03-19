@@ -28,9 +28,7 @@ public struct Segments {
         case 1://ascii
             MSH_18="ASCII"
         case 4://utf-8
-            MSH_18="UNICODE UTF-8"
-        case 5:
-            MSH_18="8859/1"
+            MSH_18="UNICODE UTF-8"        
         default:
             MSH_18="8859/1"
         }
