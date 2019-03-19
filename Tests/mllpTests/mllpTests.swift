@@ -12,7 +12,7 @@ OBR||||0401051^1^RADIOGRAFIA DE PELVIS, CADERA O COXOFEMORAL||||||||||||-^-^-^ME
 ZDS|2.25.354145732298734539126994298128312842752
 """#
         var payload: String = ""
-        let result = mllpSend.send(to: "127.0.0.1", port: "50530", message: hl7, stringEncoding: 1, payload: &payload)
+        let result = mllpSend.send(to: "127.0.0.1", port: "50530", message: hl7, stringEncoding: String.Encoding.utf8, payload: &payload)
         XCTAssertEqual(result, true)
     }
 

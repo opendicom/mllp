@@ -59,7 +59,7 @@ public struct mllpSend {
         //receive payload
         inputStream?.open()
         let readMutablePointer = UnsafeMutablePointer<UInt8>.allocate(capacity: 1024)
-        inputStream?.read(readMutablePointer, maxLength: 1024)
+        let bytesRead = inputStream?.read(readMutablePointer, maxLength: 1024) ?? 0
         let inputStreamError = inputStream?.streamError
         inputStream?.close()
         inputStream = nil
@@ -68,7 +68,7 @@ public struct mllpSend {
             payload.append(contentsOf: String(format:"<%@:%@\r\n%@",ipString,portString, inputStreamError.debugDescription))
             return false;
         }
-        payload.append(contentsOf: String(bytesNoCopy: readMutablePointer, length: 1024, encoding: String.Encoding.ascii, freeWhenDone: true)! )
+        payload.append(contentsOf: String(bytesNoCopy: readMutablePointer, length: bytesRead, encoding: String.Encoding.ascii, freeWhenDone: true)! )
         return true
     }
 }
